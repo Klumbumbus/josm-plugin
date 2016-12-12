@@ -54,7 +54,7 @@ import org.openstreetmap.josm.plugins.openstreetview.util.pref.PreferenceManager
  * @version $Revision$
  */
 public class OpenStreetViewPlugin extends Plugin implements ZoomChangeListener, LayerChangeListener, MouseListener,
-        LocationObserver, SequenceObserver, PreferenceChangedListener {
+LocationObserver, SequenceObserver, PreferenceChangedListener {
 
     /* details dialog associated with this plugin */
     private OpenStreetViewDetailsDialog detailsDialog;
@@ -104,7 +104,6 @@ public class OpenStreetViewPlugin extends Plugin implements ZoomChangeListener, 
         NavigatableComponent.addZoomChangeListener(this);
         Main.getLayerManager().addLayerChangeListener(this);
         Main.pref.addPreferenceChangeListener(this);
-        Main.map.mapView.addMouseListener(this);
     }
 
 
@@ -119,7 +118,7 @@ public class OpenStreetViewPlugin extends Plugin implements ZoomChangeListener, 
 
                 @Override
                 public void actionPerformed(final ActionEvent event) {
-                    Main.worker.execute(new DataUpdateThread(layer, detailsDialog, false));
+                    Main.worker.execute(new DataUpdateThread(layer, false));
                 }
             });
             zoomTimer.setRepeats(false);
@@ -152,7 +151,6 @@ public class OpenStreetViewPlugin extends Plugin implements ZoomChangeListener, 
             Main.pref.removePreferenceChangeListener(this);
             layer = null;
             detailsDialog.hideDialog();
-            detailsDialog.updateUI(null);
         }
     }
 
@@ -199,7 +197,6 @@ public class OpenStreetViewPlugin extends Plugin implements ZoomChangeListener, 
                 if (!detailsDialog.getButton().isSelected()) {
                     detailsDialog.getButton().doClick();
                 }
-                detailsDialog.updateUI(photo);
             }
         });
     }
@@ -296,7 +293,7 @@ public class OpenStreetViewPlugin extends Plugin implements ZoomChangeListener, 
     public void preferenceChanged(final PreferenceChangeEvent event) {
         if (event != null && (event.getNewValue() != null && !event.getNewValue().equals(event.getOldValue()))) {
             if (event.getKey().equals(PreferenceManager.getInstance().getFiltersChangedFlagKey())) {
-                Main.worker.execute(new DataUpdateThread(layer, detailsDialog, true));
+                Main.worker.execute(new DataUpdateThread(layer, true));
             }
         }
     }

@@ -21,7 +21,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.openstreetmap.josm.gui.dialogs.ToggleDialog;
-import org.openstreetmap.josm.plugins.openstreetview.entity.Photo;
 import org.openstreetmap.josm.plugins.openstreetview.observer.LocationObserver;
 import org.openstreetmap.josm.plugins.openstreetview.observer.SequenceObserver;
 import org.openstreetmap.josm.plugins.openstreetview.util.cnf.GuiConfig;
@@ -67,26 +66,6 @@ public class OpenStreetViewDetailsDialog extends ToggleDialog {
         add(createLayout(pnlMain, false, null));
         setPreferredSize(DIM);
         pnlPhoto.setSize(getPreferredSize());
-    }
-
-
-    /**
-     * Updates the details dialog with the details of the given photo.
-     *
-     * @param photo the currently selected {@code Photo}
-     */
-    public void updateUI(final Photo photo) {
-        if (photo != null) {
-            lblDetails.setText(Formatter.formatPhotoDetails(photo));
-            pnlPhoto.updateUI(photo.getLargeThumbnailName());
-        } else {
-            lblDetails.setText("");
-            pnlPhoto.updateUI(null);
-        }
-        pnlBtn.updateUI(photo);
-        lblDetails.revalidate();
-        pnlPhoto.revalidate();
-        repaint();
     }
 
     /**

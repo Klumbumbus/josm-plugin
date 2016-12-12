@@ -62,6 +62,8 @@ public final class GuiConfig extends BaseConfig {
 
     private final String maxDateFilterTxt;
 
+    private final String deprecatedTxt;
+
 
     private GuiConfig() {
         super(CONFIG_FILE);
@@ -82,7 +84,6 @@ public final class GuiConfig extends BaseConfig {
         btnOkLbl = readProperty("btn.ok.lbl");
         btnClearLbl = readProperty("btn.clear.lbl");
         btnCancelLbl = readProperty("btn.cancel.lbl");
-
         errorTitle = readProperty("error.title");
         errorPhotoListTxt = readProperty("error.photo.list");
         errorPhotoLoadingTxt = readProperty("error.photo.loading");
@@ -90,11 +91,10 @@ public final class GuiConfig extends BaseConfig {
         errorFeedbackPageTxt = readProperty("error.feedback.page");
         unacceptedDateFilterTxt = readProperty("error.dateFilter.unaccepted");
         incorrectDateFilterTxt = readProperty("error.dateFilter.incorrect");
-
         confirmDateFilterTitle = readProperty("information.dateFilter.title");
         confirmDateFilterTxt = readProperty("information.dateFilter.text");
-
         maxDateFilterTxt = readProperty("dateFilter.maxDate");
+        deprecatedTxt = readProperty("deprecated.text");
     }
 
 
@@ -204,5 +204,9 @@ public final class GuiConfig extends BaseConfig {
 
     public String getMaxDateFilterTxt() {
         return maxDateFilterTxt;
+    }
+
+    public String getDeprecatedTxt() {
+        return deprecatedTxt;
     }
 }
