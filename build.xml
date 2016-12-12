@@ -89,7 +89,8 @@
 				<attribute name="Author" value="Telenav" />
 				<attribute name="Plugin-Class" value="org.openstreetmap.josm.plugins.openstreetview.OpenStreetViewPlugin" />
 				<attribute name="Plugin-Date" value="${TODAY}" />
-				<attribute name="Plugin-Description" value="Lets you map from OpenStreetView street level imagery." />
+				<attribute name="Plugin-Description" value="The OpenStreetView plugin is deprecated and was replaced by 
+					the OpenStreetCam plugin. New features will be available in the OpenStreetCam plugin." />
 				<attribute name="Plugin-Link" value="https://wiki.openstreetmap.org/wiki/JOSM/Plugins/OpenStreetView" />
 				<attribute name="Plugin-Icon" value="images/openstreetview_logo_50x50.png" />
 				<attribute name="Plugin-Version" value="${build-label}" />
@@ -126,10 +127,10 @@
 		<condition property="josm.plugins.dir" value="${user.home}/.josm/plugins">
 			<and>
 				<not>
-					<os family="mac"/>
+					<os family="mac" />
 				</not>
 				<not>
-					<os family="windows"/>
+					<os family="windows" />
 				</not>
 			</and>
 		</condition>
